@@ -1,0 +1,3 @@
+[submodule "vre_template_tool"]
+	path = vre_template_tool
+	url = https://github.com/inab/vre_template_tool.git
