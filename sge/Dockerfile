@@ -11,5 +11,7 @@ ADD setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh
 
 #
+
+RUN echo sleep 15
 CMD /usr/local/bin/setup.sh && echo "hostname ; date" | qsub -o /tmp/a.txt
 

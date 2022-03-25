@@ -1,17 +1,33 @@
 version: "2.4"
 
 services:
-  sge_client:
-    build: ./sge/
-    volumes:
-      - ./sge/act_qmaster:/var/lib/gridengine/default/common/act_qmaster
-      - ../dockerized_vre/sge:/work
+  sgeclient:
+    build: ./sge
     environment:
-      RUNUSER_USERNAME: test
-      RUNUSER_UID: 2000
-      RUNUSER_GID: 2000
+      RUNUSER_USERNAME: user
       RUNUSER_HOME: ./sge
+      RUNUSER_UID: '2000'
+      RUNUSER_GID: '2000'
+    volumes:
+      - './sge/act_qmaster:/var/lib/gridengine/default/common/act_qmaster'
     container_name: sgeclient
-    # network_mode: host
-    hostname: sgeclient
+    hostname: sgeclient.shared
+    stdin_open: true
+    tty: true
+    networks:
+      -  shared
+        #volumes: 
+        #- ./vre_template_tool:/var/www/html/openVRE/vre_template_tool
+
+
+
+    
+networks:
+ shared: 
+    external:
+      name: shared
+
+
+
+
 
