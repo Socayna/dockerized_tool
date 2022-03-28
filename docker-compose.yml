@@ -15,19 +15,20 @@ services:
     stdin_open: true
     tty: true
     networks:
-      -  shared
-        #volumes: 
+      - shared
+       
+              #volumes: 
         #- ./vre_template_tool:/var/www/html/openVRE/vre_template_tool
 
-
+    ports:
+      -  6445:6445
+        #restart: always
 
     
 networks:
  shared: 
-    external:
+   external:
       name: shared
-
-
 
 
 
