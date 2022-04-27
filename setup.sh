@@ -22,9 +22,9 @@ if [ ! -n "${RUNUSER_HOME-}" ] ; then
 fi
 
 
-groupmod --gid $RUNUSER_GID dummy
-usermod --uid $RUNUSER_UID --gid $RUNUSER_GID --login $RUNUSER_USERNAME dummy
+groupmod --gid 2002 tool
+usermod --uid 2002 --gid 2002 --login tool tool
 
 #su - $RUNUSER_USERNAME -c "cd ${RUNUSER_HOME};export HOME=${RUNUSER_HOME};$*"
-su - $RUNUSER_USERNAME -c "$*"
+su - tool -c "$*"
 
