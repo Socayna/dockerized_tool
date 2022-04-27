@@ -20,8 +20,9 @@ RUN source venv/bin/activate
 RUN pwd
 
 WORKDIR /vre_template_tool
-
 COPY ./vre_template_tool /vre_template_tool
+RUN ls
+RUN source venv/bin/activate  
 RUN pip3 install --upgrade wheel
 RUN pip3 install -r requirements.txt
 RUN pwd
@@ -48,7 +49,7 @@ RUN echo "tool:tool" | chpasswd
 #
 #ENTRYPOINT ["/opt/docker/bin/entrypoint.sh"]
 #CMD sleep 45 && /usr/local/bin/setup.sh && echo "hostname ; date" | qsub -o /tmp/a.txt
-CMD ./VRE_RUNNER --config tests/basic/config.json --in_metadata tests/basic/in_metadata.json --out_metadata out_metadata.json --log_file VRE_RUNNER.log
+CMD source venv/bin/activate && pip3 install -q -r requirements.txt && ./VRE_RUNNER --config tests/basic/config.json --in_metadata tests/basic/in_metadata.json --out_metadata out_metadata.json --log_file VRE_RUNNER.log
 
 #add cleaning step adjusting the document + sistema de cues
 #chmod u+x scripts/maintainance/cleanUsersData.php
