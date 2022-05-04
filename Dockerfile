@@ -47,6 +47,7 @@ RUN useradd -m tool
 RUN echo "tool:tool" | chpasswd
 #RUN su - tool
 #
+#USER 2002:2002
 #ENTRYPOINT ["/opt/docker/bin/entrypoint.sh"]
 #CMD sleep 45 && /usr/local/bin/setup.sh && echo "hostname ; date" | qsub -o /tmp/a.txt
 CMD source venv/bin/activate && pip3 install -q -r requirements.txt && ./VRE_RUNNER --config tests/basic/config.json --in_metadata tests/basic/in_metadata.json --out_metadata out_metadata.json --log_file VRE_RUNNER.log
